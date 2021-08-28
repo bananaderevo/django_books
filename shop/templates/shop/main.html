@@ -2,8 +2,16 @@
 {% block content %}
     <div class="row">
 {% for i in data %}
-    <div class="col-lg-4">
-    {{ i }}</div>
+    <div class="col-lg-4" style="padding: 30px">
+    <img src="{{ i.image}}"style="max-block-size:100px"><br>
+    Book: {{ i.book }}<br>
+    Author: {{ i.author }}<br>
+    Quantity: {{ i.quantity }}<br>
+        <form action="{{ i.id }}">
+    <button type="submit" class="btn btn-warning">Detail</button></form>
+
+
+    </div>
 {% endfor %}
     </div>
 {% endblock %}

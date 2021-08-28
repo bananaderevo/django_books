@@ -6,6 +6,7 @@ class Books(models.Model):
     author = models.CharField(max_length=50)
     description = models.CharField(max_length=100)
     quantity = models.IntegerField()
+    image = models.ImageField(upload_to='images')
 
     class Meta:
         ordering = ['id']

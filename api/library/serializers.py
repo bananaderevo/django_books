@@ -9,7 +9,7 @@ class BooksSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Books
-        fields = ['book', 'author', 'description', 'quantity']
+        fields = ['book', 'author', 'description', 'quantity', 'image', 'id']
 
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
