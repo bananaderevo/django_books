@@ -6,5 +6,6 @@ urlpatterns = [
     path('profile/', profile, name='profile'),
     path('profile/edit', update_profile, name='profile_edit'),
     path('cart/', cart, name='cart'),
+    path('cart/delete/<int:id>', item_delete, name='item_delete'),
 
 ]

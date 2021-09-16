@@ -127,7 +127,7 @@ body {
         <div class="row">
             <div class="col-md-5 col-sm-12 col-xs-12">
                 <div class="imgbox">
-                    <img class='center-fit' src="{{ data.image }}">
+                    <img src="{{ data.image}}"style="max-block-size:500px">
                 </div>
             </div>
 
@@ -147,10 +147,9 @@ body {
                     <div id="myTabContent" class="tab-content">
                         <div class="tab-pane fade active in" id="more-information">
                             <br />
-                            <strong>Description Title</strong>
+                            <strong>{{ data.book }}</strong>
                             <p>
-                                Integer egestas, orci id condimentum eleifend, nibh nisi pulvinar eros, vitae ornare massa neque ut orci. Nam aliquet lectus sed odio eleifend, at iaculis dolor egestas. Nunc elementum pellentesque augue
-                                sodales porta. Etiam aliquet rutrum turpis, feugiat sodales ipsum consectetur nec.
+                                {{ data.description }}
                             </p>
                         </div>
 
@@ -174,7 +173,11 @@ body {
                 <div class="row"><form method="post">    {% csrf_token %}
 
                     <div class="buttons d-flex flex-row">
-        <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button class="btn btn-success cart-button px-5"><span class="dot">1</span>Add to cart </button>
+        {% if user.is_authenticated %}
+            <div class="cart"><i class="fa fa-shopping-cart"></i></div> <button class="btn btn-success cart-button px-5"><span class="dot">1</span>Add to cart</button>
+        {% else %}
+            Login to buy{% endif %}
+                        <div class="cart">{{ data.price }}$</div>
                     </div>
                     <div>You can't add more than one book in cart!</div>
                 </form>

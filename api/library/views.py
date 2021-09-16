@@ -2,7 +2,7 @@ from django.http import JsonResponse, Http404
 from rest_framework import viewsets
 from rest_framework.generics import get_object_or_404
 
-from .serializers import BooksSerializer
+from .serializers import BooksSerializer, OrderSerializer
 from django.http import JsonResponse
 from rest_framework.parsers import JSONParser
 from rest_framework.response import Response
@@ -46,3 +46,6 @@ class BookList(viewsets.ModelViewSet):
     serializer_class = BooksSerializer
 
 
+class OrderView(viewsets.ModelViewSet):
+    queryset = Order.objects.all()
+    serializer_class = OrderSerializer

@@ -7,6 +7,8 @@ class Books(models.Model):
     description = models.CharField(max_length=100)
     quantity = models.IntegerField()
     image = models.ImageField(upload_to='images')
+    price = models.FloatField()
+    genre = models.CharField(max_length=20)
 
     class Meta:
         ordering = ['id']
@@ -19,6 +21,7 @@ class Books(models.Model):
 class Order(models.Model):
     owner = models.CharField(max_length=100)
     books = models.TextField()
+    total = models.FloatField()
 
     class Meta:
         ordering = ['id']

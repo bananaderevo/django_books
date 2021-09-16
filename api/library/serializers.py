@@ -9,12 +9,11 @@ class BooksSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Books
-        fields = ['book', 'author', 'description', 'quantity', 'image', 'id']
+        fields = ['book', 'author', 'price', 'genre', 'description', 'quantity', 'image', 'id']
 
 
 class OrderSerializer(serializers.HyperlinkedModelSerializer):
-    author = serializers.PrimaryKeyRelatedField(read_only=True, default=CurrentUserDefault())
 
     class Meta:
         model = Order
-        fields = ['owner', 'books']
+        fields = ['owner', 'books', 'total']

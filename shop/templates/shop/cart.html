@@ -3,9 +3,7 @@
     <!--Section: Block Content-->
 <section>
 
-{% for i in cart.books %}
-    {{ i }}
-    {% endfor %}
+
   <!--Grid row-->
   <div class="row">
 
@@ -13,16 +11,19 @@
     <div class="col-lg-8">
 
       <!-- Card -->
-      <div class="card wish-list mb-3">
+{% if books %}
+{% for i in books %}
+
+      <!-- Card -->
+ <div class="card wish-list mb-3">
         <div class="card-body">
 
-          <h5 class="mb-4">Cart (<span>2</span> items)</h5>
 
           <div class="row mb-4">
             <div class="col-md-5 col-lg-3 col-xl-3">
               <div class="view zoom overlay z-depth-1 rounded mb-3 mb-md-0">
                 <img class="img-fluid w-100"
-                  src="https://mdbootstrap.com/img/Photos/Horizontal/E-commerce/Vertical/12a.jpg" alt="Sample">
+                  src="{{ i.image }}" alt="Sample">
                 <a href="#!">
                   <div class="mask waves-effect waves-light">
                     <div class="mask rgba-black-slight waves-effect waves-light"></div>
@@ -34,10 +35,11 @@
               <div>
                 <div class="d-flex justify-content-between">
                   <div>
-                    <h5>Blue denim shirt</h5>
-                    <p class="mb-3 text-muted text-uppercase small">Shirt - blue</p>
-                    <p class="mb-2 text-muted text-uppercase small">Color: blue</p>
-                    <p class="mb-3 text-muted text-uppercase small">Size: M</p>
+                    <h5>{{ i.book}} - {{ i.author }}</h5>
+                    <p class="mb-3 text-muted text-uppercase small">Genre - {{ i.genre }}</p>
+                    <p class="mb-2 text-muted text-uppercase small">Description - {{ i.description }}</p>
+                    <p class="mb-3 text-muted text-uppercase">Price - {{ i.price }}</p>
+
                   </div>
                   <div>
 
@@ -45,11 +47,10 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
-                    <a href="#!" type="button" class="card-link-secondary small text-uppercase mr-3"><i
+                    <a href="delete/{{ i.id }}" type="button" class="card-link-secondary small text-uppercase mr-3"><i
                         class="fas fa-trash-alt mr-1"></i> Remove item </a>
 
                   </div>
-                  <p class="mb-0"><span><strong>$17.99</strong></span></p>
                 </div>
               </div>
             </div>
@@ -60,7 +61,8 @@
         </div>
       </div>
       <!-- Card -->
-
+ {% endfor %}
+    {% endif %}
       <!-- Card -->
       <div class="card mb-3">
 
@@ -95,12 +97,13 @@
                   <p class="mb-0">(including VAT)</p>
                 </strong>
               </div>
-              <span><strong>$53.98</strong></span>
+              <span><strong>${{ total }}</strong></span>
             </li>
           </ul>
-
-          <button type="button" class="btn btn-primary btn-block waves-effect waves-light">go to checkout</button>
-
+            <form method="post">
+                {% csrf_token %}
+          <button type="submit" class="btn btn-primary btn-block waves-effect waves-light">Confirm</button>
+            </form>
         </div>
       </div>
       <!-- Card -->

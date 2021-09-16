@@ -1,12 +1,20 @@
 {% extends 'shop/base.html' %}
 {% block content %}
+    <style>
+        h1 img {
+        vertical-align: middle;
+    }
+    </style>
     <div class="row">
 {% for i in data %}
     <div class="col-lg-4" style="padding: 30px">
-    <img src="{{ i.image}}"style="max-block-size:100px"><br>
-    Book: {{ i.book }}<br>
-    Author: {{ i.author }}<br>
-    Quantity: {{ i.quantity }}<br>
+    <img src="{{ i.image }}"style="max-block-size:300px"><br>
+        <h4 class="name">
+                    {{ i.book }}<br>
+                    <small>By {{ i.author }}</small>
+
+                </h4>
+
         <form action="{{ i.id }}">
     <button type="submit" class="btn btn-warning">Detail</button></form>
 
